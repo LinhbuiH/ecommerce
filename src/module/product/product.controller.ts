@@ -12,11 +12,11 @@ export class ProductController {
   @Get('/')
   async getProducts(@Query() filterProductDTO: FilterProductDTO) {
     if (Object.keys(filterProductDTO).length) {
-      const filteredProducts = await this.productService.getFilteredProducts(filterProductDTO);
-      return filteredProducts;
+      return this.productService.getFilteredProducts(filterProductDTO);
+
     } else {
-      const allProducts = await this.productService.getAllProducts();
-      return allProducts;
+      return this.productService.getAllProducts();
+
     }
   }
 
@@ -29,8 +29,8 @@ export class ProductController {
 
   @Post('/')
   async addProduct(@Body() createProductDTO: CreateProductDto) {
-    const product = await this.productService.addProduct(createProductDTO);
-    return product;
+    return this.productService.addProduct(createProductDTO);
+
   }
 
   @Put('/:id')

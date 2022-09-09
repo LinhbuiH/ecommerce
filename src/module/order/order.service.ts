@@ -24,8 +24,8 @@ export class OrderService {
   }
 
   async deleteOrder(userId: string): Promise<Order> {
-    const deletedOrder = await this.OrderModel.findOneAndRemove({ userId });
-    return deletedOrder;
+    return this.OrderModel.findOneAndRemove({ userId });
+
   }
 
   private recalculateOrder(Order: OrderDocument) {
@@ -58,8 +58,8 @@ export class OrderService {
         return Order.save();
       }
     } else {
-      const newOrder = await this.createOrder(userId, itemDTO, subTotalPrice, price);
-      return newOrder;
+      return this.createOrder(userId, itemDTO, subTotalPrice, price);
+
     }
   }
 

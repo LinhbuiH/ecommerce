@@ -16,18 +16,18 @@ export class CategoryService {
     }
 
     async findAll(): Promise<Category[]> {
-        const categories = await this.categoryModel.find().exec();
-        return categories;
+        return this.categoryModel.find().exec();
+        
     }
 
     async findOne(id: string): Promise<Category> {
-        const category = await this.categoryModel.findById(id).exec();
-        return category;
+        return this.categoryModel.findById(id).exec();
+ 
     }
 
     async findOneBySlug(slug: string): Promise<Category> {
-        const category = await this.categoryModel.findOne({slug}).exec();
-        return category;
+        return this.categoryModel.findOne({slug}).exec();
+
     }
 
     async updateOne(id: string, file: any, categoryDto: CreateCategoryDto): Promise<any> {
@@ -44,8 +44,8 @@ export class CategoryService {
     }
 
     async deleteOne(id: string): Promise<any> {
-        const deletedCategory = await this.categoryModel.findByIdAndDelete(id).exec();
-        return deletedCategory;
+        return this.categoryModel.findByIdAndDelete(id).exec();
+
     }
 
 }
